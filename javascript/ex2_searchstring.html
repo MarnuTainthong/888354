@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        function search(){
+            var count=0;
+            var input_val = document.getElementById("txt_ip").value;
+            var search_type = document.querySelector('input[name="case_type"]:checked').value;
+            var search_text = document.getElementById("seaech").value;
+
+            var data_ser = input_val.split(" ");
+            //console.log(data);
+            data_ser.forEach(row => {
+                //console.log(row);
+                if(search_type == 1){
+                    if(row.search(search_text) > -1){
+                        count++;
+                    }
+                }else{
+                    var txt1 = row.toLowerCase();
+                    var txt2 = search_text.toLowerCase();
+                    
+                    if(txt1.search(txt2) > -1){
+                        count++;
+                    }
+
+                }
+                document.getElementById("result").innerHTML = count;
+            
+        });        
+
+        }
+    </script>
+</head>
+<body>
+    <center>
+        
+            <h1>ex2_searchstring.html</h1>
+            <hr>
+            TextInput :
+            <textarea rows="4" cols="50" name="txt_ip" id="txt_ip">
+            </textarea>
+            <br><br>
+            
+            SensitiveCase :
+            <input type="radio" name="case_type" value="1" checked>Yes
+            <input type="radio" name="case_type" value="0">No
+            <br><br>
+
+            Search :
+            <input type="text" name="search_ip" id="seaech">
+            <br><br>
+            <input type="submit" value="search" onclick="search()">
+            <br><br>
+
+            Result for search : <p id="result"></p>
+    </center>   
+    
+</body>
+</html>
