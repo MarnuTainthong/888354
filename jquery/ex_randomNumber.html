@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script>
+        // $(document).ready(function(){
+        //     calculate();
+
+        // });
+
+        var rnd_val1;
+        var rnd_val2;
+        var result;
+            
+        function calculate(){
+
+            var min = -999;
+            var max = 999;
+            rnd_val1 = Math.floor(Math.random() * (max - min + 1)) + min;
+            rnd_val2 = Math.floor(Math.random() * (max - min + 1)) + min;
+            // rnd_val1 = Math.floor(Math.random()*100)+1;
+            // rnd_val2 = Math.floor(Math.random()*100)+1;
+
+            $("#val_01").text(rnd_val1+" + "+rnd_val2+" = ");
+
+            result = rnd_val1+rnd_val2;
+            // $("#result").val(result);
+
+        }
+
+        function validate() {
+            // console.log(rnd_val1);
+            // console.log(rnd_val2);
+            var get_ans = $("#result").val();
+            console.log(get_ans);
+            console.log(result);
+            
+            if(get_ans==result){
+                $("#txt_result").text("That's correct.");
+                $("#txt_result").css({"color":"green"});
+            }else{
+                $("#txt_result").text("That's wrong. The answer is "+result);
+                $("#txt_result").css({"color":"red"});
+            }
+        }
+        
+        
+        
+    </script>
+</head>
+<body>
+    <center>
+            <h1>ex_randomNumber.html</h1>
+            <hr>
+            <button type="button" name="btn_gen" id="btn_gen" onclick="calculate()">Random Number</button>
+            <br><br>
+            <span id="val_01"> + </span>
+            <input type="text" name="txt_result" id="result"><br><br>
+            <button type="button" name="btn_send_ans" id="btn_ans" onclick="validate()">Send Answer</button><br><br>
+            Result : <span id="txt_result"></span> 
+
+    </center>
+
+    
+</body>
+</html>
